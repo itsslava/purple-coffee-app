@@ -1,8 +1,9 @@
 import { Text, View, StyleSheet, ImageBackground, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Button from './shared/button/button';
-import { Colors, Font } from './shared/tokens';
+import Button from '../shared/button/button';
+import { Colors, Font } from '../shared/tokens';
 import { useEffect } from 'react';
+import { Link } from 'expo-router';
 
 export default function App() {
 	const animatedTransform = new Animated.ValueXY({
@@ -32,7 +33,7 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 			<ImageBackground
-				source={require('./assets/images/coffee-img.png')}
+				source={require('../assets/images/coffee-img.png')}
 				resizeMode="cover"
 				style={styles.image}
 			>
@@ -55,6 +56,9 @@ export default function App() {
 							Один из самых вкусных кофе в городе!
 						</Animated.Text>
 						<Text style={styles.subtitle}>Свежие зерна, настоящая арабика и бережная обжарка</Text>
+						<Link href={'./(tabs)'}>
+							<Text style={styles.subtitle}>Каталог</Text>
+						</Link>
 						<Button text="Начать" />
 					</View>
 				</LinearGradient>
@@ -75,13 +79,11 @@ const styles = StyleSheet.create({
 	gradient: {
 		height: 360,
 		width: '100%',
-		// justifyContent: 'flex-end',
 	},
 	content: {
 		justifyContent: 'center',
 		paddingHorizontal: 30,
 		marginTop: 52,
-		// marginBottom: 43,
 	},
 	title: {
 		fontSize: Font.f34,
