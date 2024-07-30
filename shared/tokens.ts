@@ -18,4 +18,6 @@ export const Font = {
 	f16: 16,
 	f14: 14,
 	f12: 12,
+	regular: 'Sora',
+	semibold: 'SoraSemiBold',
 };

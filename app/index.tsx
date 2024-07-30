@@ -87,12 +87,13 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: Font.f34,
-		fontWeight: '600',
+		fontFamily: Font.semibold,
 		color: Colors.white,
 		textAlign: 'center',
 		paddingBottom: 8,
 	},
 	subtitle: {
+		fontFamily: Font.regular,
 		fontSize: Font.f14,
 		textAlign: 'center',
 		paddingBottom: 24,
