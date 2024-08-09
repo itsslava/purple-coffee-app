@@ -5,7 +5,7 @@ import { Colors, Font } from '../shared/tokens';
 import { useEffect } from 'react';
 import { Link } from 'expo-router';
 
-export default function App() {
+export default function Login() {
 	const animatedTransform = new Animated.ValueXY({
 		x: 0,
 		y: -100,

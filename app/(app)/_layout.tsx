@@ -32,7 +32,7 @@ export default function MainLayout() {
 					}}
 				/>
 				<Tabs.Screen
-					name="[alias]"
+					name="drink/[alias]"
 					options={{
 						href: null,
 					}}

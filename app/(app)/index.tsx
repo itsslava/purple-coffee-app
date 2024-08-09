@@ -5,10 +5,10 @@ export default function Home() {
 	return (
 		<View style={styles.container}>
 			<Text>Каталог</Text>
-			<Link href={'./latte'}>
+			<Link href={'/drink/latte'}>
 				<Text>Латте</Text>
 			</Link>
-			<Link href={'./cappuchino'}>
+			<Link href={'/drink/cappuchino'}>
 				<Text>Каппучино</Text>
 			</Link>
 		</View>
