@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Colors, Font, Radius } from '../tokens';
 
-export default function Button({ text, ...props }: PressableProps & { text: string }) {
+export function CustomButton({ text, ...props }: PressableProps & { text: string }) {
 	const animatedValue = new Animated.Value(100);
 	const color = animatedValue.interpolate({
 		inputRange: [0, 100],
