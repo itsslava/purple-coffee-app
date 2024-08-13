@@ -56,7 +56,7 @@ export default function Login() {
 							Один из самых вкусных кофе в городе!
 						</Animated.Text>
 						<Text style={styles.subtitle}>Свежие зерна, настоящая арабика и бережная обжарка</Text>
-						<Link href={'./(tabs)'}>
+						<Link href={'./(app)'}>
 							<Text style={styles.subtitle}>Каталог</Text>
 						</Link>
 						<CustomButton text="Начать" />

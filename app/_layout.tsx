@@ -34,6 +34,7 @@ export default function RootLayout() {
 					headerShown: false,
 					contentStyle: {
 						paddingTop: insets.top,
+						backgroundColor: '#000000',
 					},
 				}}
 			>
