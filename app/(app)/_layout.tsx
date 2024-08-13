@@ -1,12 +1,18 @@
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Colors } from '../../shared/tokens';
 
 export default function MainLayout() {
 	return (
 		<SafeAreaProvider>
-			<StatusBar style="dark" />
-			<Tabs screenOptions={{ tabBarActiveTintColor: 'blue', headerShown: false }}>
+			<StatusBar style="light" />
+			<Tabs
+				screenOptions={{
+					tabBarActiveTintColor: Colors.primary,
+					headerShown: false,
+				}}
+			>
 				<Tabs.Screen
 					name="index"
 					options={{
