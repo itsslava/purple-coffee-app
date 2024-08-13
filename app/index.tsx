@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, ImageBackground, Animated } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Button from '../shared/button/button';
+import { CustomButton } from '../shared/custom-button/custom-button';
 import { Colors, Font } from '../shared/tokens';
 import { useEffect } from 'react';
 import { Link } from 'expo-router';
@@ -59,7 +59,7 @@ export default function Login() {
 						<Link href={'./(tabs)'}>
 							<Text style={styles.subtitle}>Каталог</Text>
 						</Link>
-						<Button text="Начать" />
+						<CustomButton text="Начать" />
 					</View>
 				</LinearGradient>
 			</ImageBackground>
