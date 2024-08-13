@@ -1,11 +1,12 @@
 import { useAtomValue, useSetAtom } from 'jotai';
-import { StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { coffeeAtom, loadCoffeeAtom } from '../../entities/coffee/model/coffee.state';
 import { useEffect } from 'react';
 import { CoffeeCard } from '../../widget/coffee/ui/coffee-card/coffee-card';
+import { Colors } from '../../shared/tokens';
 
 export default function Home() {
-	const { coffee } = useAtomValue(coffeeAtom);
+	const { coffee, isLoading } = useAtomValue(coffeeAtom);
 	const loadCoffee = useSetAtom(loadCoffeeAtom);
 
 	useEffect(() => {
@@ -14,10 +15,13 @@ export default function Home() {
 
 	return (
 		<View style={styles.container}>
+			{isLoading && (
+				<ActivityIndicator size="large" color={Colors.primary} style={styles.indicator} />
+			)}
 			{coffee.length > 0 && (
-				<View>
+				<View style={styles.coffeeList}>
 					{coffee.map((c) => (
-						<CoffeeCard key={c.id} coffee={c} onPress={() => console.log('pressed')} />
+						<CoffeeCard key={c.id} coffee={c} onPress={() => console.log('Pressed')} />
 					))}
 				</View>
 			)}
@@ -27,6 +31,15 @@ export default function Home() {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 250,
+		padding: 30,
+	},
+	coffeeList: {
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		rowGap: 13,
+		justifyContent: 'space-between',
+	},
+	indicator: {
+		marginTop: 30,
 	},
 });
