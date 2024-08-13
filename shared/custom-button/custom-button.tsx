@@ -8,7 +8,15 @@ import {
 } from 'react-native';
 import { Colors, Font, Radius } from '../tokens';
 
-export function CustomButton({ text, ...props }: PressableProps & { text: string }) {
+type ButtonSize = 'large' | 'small';
+
+interface CustomButtonProps extends PressableProps {
+	text?: string;
+	icon?: React.ReactNode;
+	size?: ButtonSize;
+}
+
+export function CustomButton({ text, icon, size = 'large', ...props }: CustomButtonProps) {
 	const animatedValue = new Animated.Value(100);
 	const color = animatedValue.interpolate({
 		inputRange: [0, 100],
@@ -35,8 +43,16 @@ export function CustomButton({ text, ...props }: PressableProps & { text: string
 
 	return (
 		<Pressable {...props} onPressIn={fadeIn} onPressOut={fadeOut}>
-			<Animated.View style={{ ...styles.button, backgroundColor: color }}>
-				<Text style={styles.buttonText}>{text}</Text>
+			<Animated.View
+				style={[
+					styles.button,
+					size === 'small' ? styles.smallButton : styles.largeButton,
+
+					{ backgroundColor: color },
+				]}
+			>
+				{icon && <>{icon}</>}
+				{text && <Text style={styles.buttonText}>{text}</Text>}
 			</Animated.View>
 		</Pressable>
 	);
@@ -44,10 +60,20 @@ export function CustomButton({ text, ...props }: PressableProps & { text: string
 
 const styles = StyleSheet.create({
 	button: {
-		borderRadius: Radius.r16,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	largeButton: {
 		height: 62,
+		paddingVertical: 16,
+		borderRadius: Radius.r16,
+		paddingHorizontal: 16,
+	},
+	smallButton: {
+		width: 32,
+		height: 32,
+		padding: 8,
+		borderRadius: Radius.r10,
 	},
 	buttonText: {
 		fontFamily: Font.semibold,
