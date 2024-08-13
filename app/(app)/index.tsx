@@ -1,16 +1,26 @@
-import { Link } from 'expo-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { useAtomValue, useSetAtom } from 'jotai';
+import { StyleSheet, View } from 'react-native';
+import { coffeeAtom, loadCoffeeAtom } from '../../entities/coffee/model/coffee.state';
+import { useEffect } from 'react';
+import { CoffeeCard } from '../../widget/coffee/ui/coffee-card/coffee-card';
 
 export default function Home() {
+	const { coffee } = useAtomValue(coffeeAtom);
+	const loadCoffee = useSetAtom(loadCoffeeAtom);
+
+	useEffect(() => {
+		loadCoffee();
+	}, []);
+
 	return (
 		<View style={styles.container}>
-			<Text>Каталог</Text>
-			<Link href={'/drink/latte'}>
-				<Text>Латте</Text>
-			</Link>
-			<Link href={'/drink/cappuchino'}>
-				<Text>Каппучино</Text>
-			</Link>
+			{coffee.length > 0 && (
+				<View>
+					{coffee.map((c) => (
+						<CoffeeCard key={c.id} coffee={c} onPress={() => console.log('pressed')} />
+					))}
+				</View>
+			)}
 		</View>
 	);
 }
