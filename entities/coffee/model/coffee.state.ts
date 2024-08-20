@@ -10,6 +10,8 @@ export const coffeeAtom = atom<CoffeeState>({
 	filter: 'all',
 });
 
+export const searchAtom = atom<string>(''); // Состояние для текста поиска
+
 export const loadCoffeeAtom = atom(
 	(get) => {
 		return get(coffeeAtom);
@@ -26,12 +28,23 @@ export const loadCoffeeAtom = atom(
 			const url = filter && filter !== 'all' ? API.filter(filter.toLowerCase()) : API.coffee;
 			const { data } = await axios.get<Coffee[]>(url);
 
+			const searchText = get(searchAtom).toLowerCase();
+			const filteredData = searchText
+				? data.filter(
+						(coffee) =>
+							coffee.name.toLowerCase().includes(searchText) ||
+							coffee.description.toLowerCase().includes(searchText),
+					)
+				: data;
+
 			set(coffeeAtom, {
 				...get(coffeeAtom),
-				coffee: data,
+				coffee: filteredData,
 				isLoading: false,
 				error: null,
 			});
+
+			set(searchAtom, '');
 		} catch (error) {
 			if (error instanceof AxiosError) {
 				set(coffeeAtom, {
