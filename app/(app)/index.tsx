@@ -1,50 +1,75 @@
-import { useAtomValue, useSetAtom } from 'jotai';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
 import {
 	coffeeAtom,
 	loadCoffeeAtom,
+	searchAtom,
 	setFilterAtom,
 } from '../../entities/coffee/model/coffee.state';
 import { useEffect } from 'react';
-import { CoffeeCard } from '../../widget/coffee/ui/coffee-card/coffee-card';
-import { Colors } from '../../shared/tokens';
-import { CoffeeFilter } from '../../widget/coffee/ui/coffee-filter/coffee-filter';
+import { Colors, Font } from '../../shared/tokens';
 import { DrinkFilter } from '../../entities/coffee/model/coffee.model';
+import { CoffeeCard, CoffeeFilter, CoffeeSearch } from '../../widget';
 
 export default function Home() {
 	const { isLoading, coffee, filter } = useAtomValue(coffeeAtom);
-	const loadCoffee = useSetAtom(loadCoffeeAtom);
-	const setFilter = useSetAtom(setFilterAtom);
 
+	const loadCoffee = useSetAtom(loadCoffeeAtom);
 	useEffect(() => {
 		loadCoffee();
 	}, []);
 
+	const setFilter = useSetAtom(setFilterAtom);
 	const handleFilterChange = (filter: DrinkFilter) => {
 		setFilter(filter);
 		loadCoffee(filter);
 	};
 
+	const [searchText, setSearchText] = useAtom(searchAtom);
+	const handleSearchChange = (text: string) => {
+		setSearchText(text);
+	};
+	const handleSearchSubmit = () => {
+		loadCoffee(filter);
+	};
+
 	return (
-		<View style={styles.container}>
-			<CoffeeFilter onFilterChange={handleFilterChange} currentFilter={filter ?? 'all'} />
-			{isLoading && (
-				<ActivityIndicator size="large" color={Colors.primary} style={styles.indicator} />
-			)}
-			{!isLoading && coffee.length > 0 && (
-				<View style={styles.coffeeList}>
-					{coffee.map((c) => (
-						<CoffeeCard key={c.id} coffee={c} onPress={() => console.log('Pressed')} />
-					))}
-				</View>
-			)}
-		</View>
+		<>
+			<View style={styles.header}>
+				<CoffeeSearch
+					value={searchText}
+					onChangeText={handleSearchChange}
+					onSubmitEditing={handleSearchSubmit}
+				/>
+			</View>
+			<View style={styles.container}>
+				<CoffeeFilter onFilterChange={handleFilterChange} currentFilter={filter ?? 'all'} />
+				{isLoading && (
+					<ActivityIndicator size="large" color={Colors.primary} style={styles.indicator} />
+				)}
+				{!isLoading && coffee?.length > 0 && (
+					<View style={styles.coffeeList}>
+						{coffee.map((c) => (
+							<CoffeeCard key={c.id} coffee={c} onPress={() => console.log('Pressed')} />
+						))}
+					</View>
+				)}
+				{!isLoading && coffee?.length === 0 && (
+					<Text style={styles.error}>Мы не нашли напитки по вашему запросу</Text>
+				)}
+			</View>
+		</>
 	);
 }
 
 const styles = StyleSheet.create({
+	header: {
+		backgroundColor: Colors.black,
+		height: 170,
+		paddingHorizontal: 30,
+	},
 	container: {
-		padding: 30,
+		paddingHorizontal: 30,
 	},
 	coffeeList: {
 		flexDirection: 'row',
@@ -54,5 +79,10 @@ const styles = StyleSheet.create({
 	},
 	indicator: {
 		marginTop: 30,
+	},
+	error: {
+		fontFamily: Font.regular,
+		fontSize: Font.f16,
+		textAlign: 'center',
 	},
 });
