@@ -1,9 +1,9 @@
-import { Text, View, StyleSheet, ImageBackground, Animated } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { CustomButton } from '../shared/custom-button/custom-button';
-import { Colors, Font } from '../shared/tokens';
 import { useEffect } from 'react';
-import { Link } from 'expo-router';
+import { Text, View, StyleSheet, ImageBackground, Animated } from 'react-native';
+import { router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
+import { CustomButton } from '@shared';
+import { Colors, Font } from '@tokens';
 
 export default function Login() {
 	const animatedTransform = new Animated.ValueXY({
@@ -56,10 +56,7 @@ export default function Login() {
 							Один из самых вкусных кофе в городе!
 						</Animated.Text>
 						<Text style={styles.subtitle}>Свежие зерна, настоящая арабика и бережная обжарка</Text>
-						<Link href={'./(tabs)'}>
-							<Text style={styles.subtitle}>Каталог</Text>
-						</Link>
-						<CustomButton text="Начать" />
+						<CustomButton text="Начать" onPress={() => router.replace('/(app)')} />
 					</View>
 				</LinearGradient>
 			</ImageBackground>

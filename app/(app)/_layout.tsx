@@ -1,34 +1,47 @@
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Colors, Font } from '@tokens';
+import { CustomTabLabel } from '@shared';
+import CatalogTabIcon from '@icons/tab-icons/catalog-tab';
+import CartTabIcon from '@icons/tab-icons/cart-tab';
 
 export default function MainLayout() {
 	return (
 		<SafeAreaProvider>
-			<StatusBar style="dark" />
-			<Tabs screenOptions={{ tabBarActiveTintColor: 'blue', headerShown: false }}>
+			<StatusBar style="light" />
+			<Tabs
+				screenOptions={{
+					tabBarActiveTintColor: Colors.primary,
+					tabBarInactiveTintColor: Colors.grey,
+					tabBarLabelStyle: {
+						fontSize: Font.f14,
+						fontFamily: Font.regular,
+					},
+					tabBarStyle: {
+						flexDirection: 'row',
+					},
+					headerShown: false,
+				}}
+			>
 				<Tabs.Screen
 					name="index"
 					options={{
-						title: 'Главная',
+						tabBarLabel: ({ focused }) => {
+							return (
+								<CustomTabLabel focused={focused} label="Главная" IconComponent={CatalogTabIcon} />
+							);
+						},
+						tabBarIcon: () => null,
 					}}
 				/>
 				<Tabs.Screen
-					name="cart"
+					name="order"
 					options={{
-						title: 'Заказ',
-					}}
-				/>
-				<Tabs.Screen
-					name="address"
-					options={{
-						href: null,
-					}}
-				/>
-				<Tabs.Screen
-					name="success"
-					options={{
-						href: null,
+						tabBarLabel: ({ focused }) => {
+							return <CustomTabLabel focused={focused} label="Заказ" IconComponent={CartTabIcon} />;
+						},
+						tabBarIcon: () => null,
 					}}
 				/>
 				<Tabs.Screen

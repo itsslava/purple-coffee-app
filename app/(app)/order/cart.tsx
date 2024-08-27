@@ -1,13 +1,12 @@
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
+import { CustomButton } from '@shared';
 
 export default function Cart() {
 	return (
 		<View style={styles.container}>
 			<Text>Корзина</Text>
-			<Link href={'./success'}>
-				<Text>Заказать</Text>
-			</Link>
+			<CustomButton text="Заказать" onPress={() => router.replace('/order/success')} />
 		</View>
 	);
 }
