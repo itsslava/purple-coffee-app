@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
-import { CustomButton } from '../../../shared/custom-button/custom-button';
+import { CustomButton } from '@shared';
 
 export default function Cart() {
 	return (

@@ -1,7 +1,7 @@
 import { StyleSheet, TextInputProps } from 'react-native';
-import { CustomInput } from '../../../../shared/custom-input/custom-input';
-import SearchIcon from '../../../../assets/icons/search';
-import { Colors, Radius } from '../../../../shared/tokens';
+import { CustomInput } from '@shared';
+import SearchIcon from '@icons/search';
+import { Colors, Radius } from '@tokens';
 
 interface SearchCoffeeProps extends TextInputProps {
 	value: string;

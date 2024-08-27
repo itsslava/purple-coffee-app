@@ -6,7 +6,7 @@ import {
 	Animated,
 	GestureResponderEvent,
 } from 'react-native';
-import { Colors, Font, Radius } from '../tokens';
+import { Colors, Font, Radius } from '@tokens';
 
 type ButtonSize = 'large' | 'small';
 

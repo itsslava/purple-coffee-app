@@ -1,10 +1,10 @@
 import { Pressable, PressableProps, Text, View, Image, StyleSheet } from 'react-native';
-import { Coffee } from '../../../../entities/coffee/model/coffee.model';
-import RatingStarIcon from '../../../../assets/icons/rating-star';
-import { CustomButton } from '../../../../shared/custom-button/custom-button';
-import { Colors, Font, Radius } from '../../../../shared/tokens';
 import { BlurView } from 'expo-blur';
-import AddIcon from '../../../../assets/icons/add';
+import { Coffee } from '@entities/coffee/model/coffee.model';
+import RatingStarIcon from '@icons/rating-star';
+import AddIcon from '@icons/add';
+import { CustomButton } from '@shared';
+import { Colors, Radius, Font } from '@tokens';
 
 interface CoffeeCardProps {
 	coffee: Coffee;

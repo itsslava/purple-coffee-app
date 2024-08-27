@@ -1,15 +1,15 @@
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { ActivityIndicator, StyleSheet, View, Text } from 'react-native';
+import { useEffect } from 'react';
 import {
 	coffeeAtom,
 	loadCoffeeAtom,
 	searchAtom,
 	setFilterAtom,
-} from '../../entities/coffee/model/coffee.state';
-import { useEffect } from 'react';
-import { Colors, Font } from '../../shared/tokens';
-import { DrinkFilter } from '../../entities/coffee/model/coffee.model';
-import { CoffeeCard, CoffeeFilter, CoffeeSearch } from '../../widget';
+} from '@entities/coffee/model/coffee.state';
+import { DrinkFilter } from '@entities/coffee/model/coffee.model';
+import { Colors, Font } from '@tokens';
+import { CoffeeCard, CoffeeFilter, CoffeeSearch } from '@widget';
 
 export default function Home() {
 	const { isLoading, coffee, filter } = useAtomValue(coffeeAtom);

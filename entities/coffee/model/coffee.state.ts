@@ -25,7 +25,8 @@ export const loadCoffeeAtom = atom(
 		});
 
 		try {
-			const url = filter && filter !== 'all' ? API.filter(filter.toLowerCase()) : API.coffee;
+			const url =
+				filter && filter !== 'all' ? API.getCoffeeByType(filter.toLowerCase()) : API.coffee;
 			const { data } = await axios.get<Coffee[]>(url);
 
 			const searchText = get(searchAtom).toLowerCase();

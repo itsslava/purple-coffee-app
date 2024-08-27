@@ -1,9 +1,9 @@
-import { Text, View, StyleSheet, ImageBackground, Animated } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { CustomButton } from '../shared/custom-button/custom-button';
-import { Colors, Font } from '../shared/tokens';
 import { useEffect } from 'react';
+import { Text, View, StyleSheet, ImageBackground, Animated } from 'react-native';
 import { router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
+import { CustomButton } from '@shared';
+import { Colors, Font } from '@tokens';
 
 export default function Login() {
 	const animatedTransform = new Animated.ValueXY({

@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, Image } from 'react-native';
-import { CustomButton } from '../../../shared/custom-button/custom-button';
 import { router } from 'expo-router';
-import { Colors, Font } from '../../../shared/tokens';
+import { CustomButton } from '@shared';
+import { Font, Colors } from '@tokens';
 
 export default function Success() {
 	return (

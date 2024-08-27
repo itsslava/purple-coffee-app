@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { Colors } from '../tokens';
+import { Colors } from '@tokens';
 
 interface CustomTabIconProps {
 	focused: boolean;

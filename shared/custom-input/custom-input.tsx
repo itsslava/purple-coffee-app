@@ -1,5 +1,5 @@
 import { TextInput, StyleSheet, TextInputProps, View } from 'react-native';
-import { Colors, Font } from '../tokens';
+import { Colors, Font } from '@tokens';
 
 interface CustomInputProps extends TextInputProps {
 	icon?: React.ReactNode;

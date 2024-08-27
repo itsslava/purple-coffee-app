@@ -1,10 +1,10 @@
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Colors, Font } from '../../shared/tokens';
-import { CustomTabLabel } from '../../shared/custom-tab-label/custom-tab-label';
-import CatalogTabIcon from '../../assets/icons/tab-icons/catalog-tab';
-import CartTabIcon from '../../assets/icons/tab-icons/cart-tab';
+import { Colors, Font } from '@tokens';
+import { CustomTabLabel } from '@shared';
+import CatalogTabIcon from '@icons/tab-icons/catalog-tab';
+import CartTabIcon from '@icons/tab-icons/cart-tab';
 
 export default function MainLayout() {
 	return (

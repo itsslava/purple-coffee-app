@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Pressable, Text, StyleSheet } from 'react-native';
-import { DrinkFilter, filterLabels } from '../../../../entities/coffee/model/coffee.model';
-import { Colors, Font, Radius } from '../../../../shared/tokens';
+import { Colors, Font, Radius } from '@tokens';
+import { DrinkFilter, filterLabels } from '@entities/coffee/model/coffee.model';
 
 interface DrinkFilterComponentProps {
 	onFilterChange: (filter: DrinkFilter) => void;
